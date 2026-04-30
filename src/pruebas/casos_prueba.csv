@@ -1,0 +1,60 @@
+ID,Patrón,Valor de prueba,Resultado esperado,Resultado obtenido,Tipo de caso,Descripción
+CP-01,Correo electrónico,juan.perez@gmail.com,Válido,Válido,Exitoso,Correo estándar con punto en usuario
+CP-02,Correo electrónico,estudiante_01@uni.edu.co,Válido,Válido,Exitoso,Correo con guion bajo y doble extensión
+CP-03,Correo electrónico,soporte_01@transito.edu.co,Válido,Válido,Exitoso,Correo institucional colombiano
+CP-04,Correo electrónico,user.name-ok@dominio.org,Válido,Válido,Exitoso,Correo con punto y guion en usuario
+CP-05,Correo electrónico,a@b.co,Válido,Válido,Exitoso,Correo mínimo válido
+CP-06,Correo electrónico,juan@,Inválido,Inválido,Fallido,Sin dominio ni extensión
+CP-07,Correo electrónico,@gmail.com,Inválido,Inválido,Fallido,Sin parte de usuario
+CP-08,Correo electrónico,juan@.com,Inválido,Inválido,Fallido,Dominio vacío (punto justo después de @)
+CP-09,Correo electrónico,sinArroba.com,Inválido,Inválido,Fallido,Falta símbolo @
+CP-10,Correo electrónico,doble@@correo.com,Inválido,Inválido,Fallido,Dos arrobas consecutivas
+CP-11,Correo electrónico,.inicio@correo.com,Inválido,Inválido,Fallido,Usuario inicia con punto
+CP-12,Correo electrónico,correo@dominio.c,Inválido,Inválido,Fallido,Extensión de 1 sola letra (mínimo 2)
+CP-13,Número telefónico,3201234567,Válido,Válido,Exitoso,Celular colombiano sin prefijo
+CP-14,Número telefónico,+57 320 123 4567,Válido,Válido,Exitoso,Con prefijo +57 y espacios cada 3 dígitos
+CP-15,Número telefónico,57-311-456-7890,Válido,Válido,Exitoso,Con prefijo 57 y guiones como separador
+CP-16,Número telefónico,+57 300 000 0000,Válido,Válido,Exitoso,Número con prefijo internacional y espacios
+CP-17,Número telefónico,3109876543,Válido,Válido,Exitoso,Celular válido que inicia en 310
+CP-18,Número telefónico,123456,Inválido,Inválido,Fallido,Demasiado corto y no inicia en 3
+CP-19,Número telefónico,4201234567,Inválido,Inválido,Fallido,No inicia en dígito 3
+CP-20,Número telefónico,320123456,Inválido,Inválido,Fallido,Solo 9 dígitos (faltan uno)
+CP-21,Número telefónico,+58 320 123 4567,Inválido,Inválido,Fallido,Prefijo de otro país (+58 Venezuela)
+CP-22,Número telefónico,32012345678,Inválido,Inválido,Fallido,11 dígitos (uno de más)
+CP-23,Fecha,01/01/2000,Válido,Válido,Exitoso,Formato DD/MM/AAAA estándar
+CP-24,Fecha,25/04/2025,Válido,Válido,Exitoso,Fecha de trámite reciente en formato DD/MM/AAAA
+CP-25,Fecha,25-04-2025,Válido,Válido,Exitoso,Formato DD-MM-AAAA con guiones
+CP-26,Fecha,2024/12/31,Válido,Válido,Exitoso,Formato AAAA/MM/DD invertido
+CP-27,Fecha,2025-01-15,Válido,Válido,Exitoso,Formato AAAA-MM-DD con guiones
+CP-28,Fecha,32/13/2020,Inválido,Inválido,Fallido,Día 32 y mes 13 fuera de rango
+CP-29,Fecha,01-2020,Inválido,Inválido,Fallido,Formato incompleto sin día ni separador completo
+CP-30,Fecha,00/05/2021,Inválido,Inválido,Fallido,Día 00 no es válido (mínimo 01)
+CP-31,Fecha,15/00/2021,Inválido,Inválido,Fallido,Mes 00 no es válido (mínimo 01)
+CP-32,Fecha,2025/13/01,Inválido,Inválido,Fallido,Mes 13 fuera de rango en formato AAAA/MM/DD
+CP-33,URL,https://www.google.com,Válido,Válido,Exitoso,URL estándar con www y protocolo https
+CP-34,URL,http://mi-sitio.edu.co/pagina,Válido,Válido,Exitoso,URL con http y ruta simple
+CP-35,URL,https://transito.gov.co,Válido,Válido,Exitoso,URL institucional sin www
+CP-36,URL,http://sub.dominio.org/ruta/extra,Válido,Válido,Exitoso,URL con subdominio y ruta con múltiples segmentos
+CP-37,URL,https://www.transitocolombia.gov.co/tramites,Válido,Válido,Exitoso,URL institucional con doble extensión y ruta
+CP-38,URL,www.google.com,Inválido,Inválido,Fallido,Falta protocolo http:// o https://
+CP-39,URL,ftp://algo.com,Inválido,Inválido,Fallido,Protocolo ftp no es válido
+CP-40,URL,https://.com,Inválido,Inválido,Fallido,Dominio vacío antes de extensión
+CP-41,URL,http://nodot,Inválido,Inválido,Fallido,Sin punto en el dominio (sin TLD)
+CP-42,Placa vehicular,ABC123,Válido,Válido,Exitoso,Placa de carro: 3 letras + 3 dígitos
+CP-43,Placa vehicular,XYZ45K,Válido,Válido,Exitoso,Placa de moto: 3 letras + 2 dígitos + 1 letra
+CP-44,Placa vehicular,ZZZ999,Válido,Válido,Exitoso,Placa de carro con letras y dígitos al límite
+CP-45,Placa vehicular,AAA00A,Válido,Válido,Exitoso,Placa de moto con dígitos 00
+CP-46,Placa vehicular,AB1234,Inválido,Inválido,Fallido,Solo 2 letras al inicio (mínimo 3)
+CP-47,Placa vehicular,1BC123,Inválido,Inválido,Fallido,Inicia con dígito en lugar de letra
+CP-48,Placa vehicular,ABCD12,Inválido,Inválido,Fallido,4 letras al inicio (máximo 3)
+CP-49,Placa vehicular,ABC12,Inválido,Inválido,Fallido,Solo 5 caracteres (mínimo 6)
+CP-50,Placa vehicular,abc123,Inválido,Inválido,Fallido,Letras en minúscula (solo mayúsculas permitidas)
+CP-51,Cédula de ciudadanía,1234567890,Válido,Válido,Exitoso,Cédula de 10 dígitos (máximo permitido)
+CP-52,Cédula de ciudadanía,987654,Válido,Válido,Exitoso,Cédula de 6 dígitos (mínimo permitido)
+CP-53,Cédula de ciudadanía,100000,Válido,Válido,Exitoso,Cédula en el límite inferior del rango
+CP-54,Cédula de ciudadanía,9999999999,Válido,Válido,Exitoso,Cédula en el límite superior del rango
+CP-55,Cédula de ciudadanía,0123456,Inválido,Inválido,Fallido,Inicia en cero
+CP-56,Cédula de ciudadanía,12345,Inválido,Inválido,Fallido,Solo 5 dígitos (mínimo 6)
+CP-57,Cédula de ciudadanía,12345678901,Inválido,Inválido,Fallido,11 dígitos (máximo 10)
+CP-58,Cédula de ciudadanía,12A456,Inválido,Inválido,Fallido,Contiene letra (solo dígitos permitidos)
+CP-59,Cédula de ciudadanía,000000,Inválido,Inválido,Fallido,Inicia en cero (aunque tenga 6 dígitos)
