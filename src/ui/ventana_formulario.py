@@ -3,7 +3,7 @@ import sys
 import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 from motor.validadores import (
-    validar_correo, validar_telefono, validar_fecha, validar_placa, validar_cedula,
+    validar_correo, validar_telefono, validar_fecha, validar_placa, validar_cedula, validar_nombre
 )
 
 # Configuración de cada campo del formulario
@@ -21,7 +21,7 @@ CAMPOS = [
         "label":       "Nombre completo",
         "icono":       "👤",
         "placeholder": "Ej: Juan Pérez García",
-        "validador":   lambda s: len(s.strip()) >= 3,
+        "validador":   validar_nombre,
         "hint":        "Mínimo 3 caracteres",
     },
     {

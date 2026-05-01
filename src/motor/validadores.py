@@ -230,18 +230,52 @@ def validar_placa(s: str) -> bool:
 
 
 def validar_cedula(s: str) -> bool:
-    n = len(s)
+    # Permitir puntos como separadores visuales
+    cedula = ""
 
-    # Longitud entre 6 y 10
+    for c in s:
+        # Ignorar puntos (ej: 1.234.567)
+        if c == ".":
+            continue
+
+        # Si aparece cualquier carácter distinto a dígito o punto → inválido
+        if not es_digito(c):
+            return False
+
+        cedula += c
+
+    n = len(cedula)
+
+    # Longitud entre 6 y 10 dígitos reales
     if n < 6 or n > 10:
         return False
 
-    # Solo dígitos
-    if not all(es_digito(c) for c in s):
+    # No puede iniciar en 0
+    if cedula[0] == '0':
         return False
 
-    # No puede empezar en 0
-    if s[0] == '0':
+    # Regla contextual:
+    # Si tiene 10 dígitos y empieza en 3, probablemente es celular colombiano
+    # (evita que 3201234567 se detecte como cédula)
+    if n == 10 and cedula[0] == '3':
         return False
+
+    return True
+
+def validar_nombre(s: str) -> bool:
+    """
+    Valida nombres:
+    - mínimo 3 caracteres
+    - solo letras y espacios
+    """
+    nombre = s.strip()
+
+    # Longitud mínima real
+    if len(nombre) < 3:
+        return False
+
+    for c in nombre:
+        if not (es_letra(c) or c == " "):
+            return False
 
     return True

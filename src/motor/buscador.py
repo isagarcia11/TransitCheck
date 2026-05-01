@@ -1,6 +1,6 @@
 from motor.validadores import (
     validar_correo, validar_telefono, validar_fecha,
-    validar_url, validar_placa, validar_cedula,
+    validar_url, validar_placa, validar_cedula, es_digito
 )
 
 PATRONES = {
@@ -41,13 +41,26 @@ def buscar_patron(texto: str, tipo_patron: str) -> list[dict]:
 
     while i < n:
         encontrado = False
+
         for j in range(n, i + long_min - 1, -1):
             subcadena = texto[i:j]
+
             if validador(subcadena):
-                resultado.append({"valor": subcadena, "inicio": i, "fin": j})
+
+                # Evitar detectar fragmentos dentro de números más largos
+                if tipo_patron in ["cedula", "telefono"] and not es_limite_valido(texto, i, j):
+                    continue
+
+                resultado.append({
+                    "valor": subcadena,
+                    "inicio": i,
+                    "fin": j
+                })
+
                 i = j
                 encontrado = True
                 break
+
         if not encontrado:
             i += 1
 
@@ -99,3 +112,19 @@ def buscar_todos_los_patrones(texto: str) -> dict[str, list[dict]]:
                 i += 1
 
     return resultado
+
+def es_limite_valido(texto: str, inicio: int, fin: int) -> bool:
+    """
+    Evita detectar subcadenas dentro de secuencias numéricas más largas.
+    Ejemplo:
+    No permite que '310672056' salga dentro de '3106720569'
+    """
+    # Antes
+    if inicio > 0 and es_digito(texto[inicio - 1]):
+        return False
+
+    # Después
+    if fin < len(texto) and es_digito(texto[fin]):
+        return False
+
+    return True
