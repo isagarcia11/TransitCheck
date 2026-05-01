@@ -3,8 +3,7 @@ import sys
 import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 from motor.validadores import (
-    validar_correo, validar_telefono, validar_fecha,
-    validar_url, validar_placa, validar_cedula,
+    validar_correo, validar_telefono, validar_fecha, validar_placa, validar_cedula,
 )
 
 # Configuración de cada campo del formulario
@@ -56,14 +55,6 @@ CAMPOS = [
         "placeholder": "Ej: 25/04/2025",
         "validador":   validar_fecha,
         "hint":        "DD/MM/AAAA  |  DD-MM-AAAA  |  AAAA/MM/DD",
-    },
-    {
-        "id":          "url",
-        "label":       "URL de referencia",
-        "icono":       "🌐",
-        "placeholder": "Ej: https://www.transito.gov.co",
-        "validador":   validar_url,
-        "hint":        "Debe iniciar con http:// o https://",
     },
 ]
 
