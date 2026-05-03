@@ -33,3 +33,7 @@ def es_caracter_usuario_correo(c: str) -> bool:
 def es_caracter_dominio(c: str) -> bool:
     """Retorna True si el carácter es válido en un dominio (letras, dígitos, guion)."""
     return es_alfanumerico(c) or c == '-'
+
+def es_letra_especial(c: str) -> bool:
+    """Letras con tilde y ñ del español."""
+    return c in "áéíóúüñÁÉÍÓÚÜÑ"

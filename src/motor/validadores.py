@@ -2,7 +2,7 @@ from motor.auxiliares import (
     es_letra, es_digito, es_alfanumerico,
     es_mayuscula, es_minuscula,
     es_separador_fecha, es_caracter_url,
-    es_caracter_usuario_correo, es_caracter_dominio
+    es_caracter_usuario_correo, es_caracter_dominio, es_letra_especial
 )
 
 
@@ -142,10 +142,6 @@ def validar_fecha(s: str) -> bool:
     return i == n
 
 
-# ─────────────────────────────────────────────
-#  4. URL
-#     http:// o https:// + dominio.ext + ruta opcional
-# ─────────────────────────────────────────────
 def validar_url(s: str) -> bool:
     i = 0
     n = len(s)
@@ -263,19 +259,10 @@ def validar_cedula(s: str) -> bool:
     return True
 
 def validar_nombre(s: str) -> bool:
-    """
-    Valida nombres:
-    - mínimo 3 caracteres
-    - solo letras y espacios
-    """
     nombre = s.strip()
-
-    # Longitud mínima real
     if len(nombre) < 3:
         return False
-
     for c in nombre:
-        if not (es_letra(c) or c == " "):
+        if not (es_letra(c) or es_letra_especial(c) or c == " "):
             return False
-
     return True
