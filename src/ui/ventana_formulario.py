@@ -308,7 +308,7 @@ class TabFormulario:
         ctk.CTkButton(
             ventana,
             text="Cerrar",
-            command=ventana.destroy,
+            command=lambda: [ventana.destroy(), self._limpiar()],
             fg_color=C["primario"],
             hover_color=C["primario_h"],
             text_color="#FFFFFF",
